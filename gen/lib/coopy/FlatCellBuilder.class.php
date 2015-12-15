@@ -49,9 +49,6 @@ class coopy_FlatCellBuilder implements coopy_CellBuilder{
 	}
 	static function quoteForDiff($v, $d) {
 		$nil = "NULL";
-		if($v->equals($d, null)) {
-			return $nil;
-		}
 		$str = $v->toString($d);
 		$score = 0;
 		{

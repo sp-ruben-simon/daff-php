@@ -2,7 +2,7 @@
 
 class coopy_PhpCellView implements coopy_View {
   public function toString($d) {
-    return strval($d);
+    return is_bool($d) ? var_export($d, true) : strval($d);
   }
   public function equals($d1,$d2) {
       return "".$d1 == "".$d2;
