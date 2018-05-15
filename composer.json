@@ -18,6 +18,6 @@
         "phpunit/phpunit": "*"
     },
     "autoload": {
-        "files": ["gen/lib/php/Boot.class.php"]
+        "files": ["gen/lib/php/Boot.php"]
     }
 }
