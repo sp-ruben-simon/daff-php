@@ -18,6 +18,9 @@
         "phpunit/phpunit": "*"
     },
     "autoload": {
-        "files": ["gen/lib/php/Boot.php"]
+        "files": ["gen/lib/php/Boot.php"],
+        "psr-0" : {
+            "coopy_" : "gen/lib/coopy/"
+        }
     }
 }

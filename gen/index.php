@@ -13,3 +13,6 @@ spl_autoload_register(
 \php\Boot::__hx__init();
 #(unknown)
 Coopy::main();
+
+$data = array();
+$table = new coopy_PhpTableView($data);
