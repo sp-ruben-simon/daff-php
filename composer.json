@@ -18,9 +18,11 @@
         "phpunit/phpunit": "*"
     },
     "autoload": {
-        "files": ["gen/lib/php/Boot.php"],
-        "psr-0" : {
-            "coopy_" : "gen/lib/coopy/"
-        }
+        "classmap": [
+            "gen/"
+        ]
+    },
+    "autoload-dev": {
+      "psr-4": { "get\\tests\\": "tests/" }
     }
 }

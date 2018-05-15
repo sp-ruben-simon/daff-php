@@ -1,6 +1,8 @@
 <?php
 
-class coopy_PhpTableView implements coopy_Table{
+namespace coopy;
+
+class PhpTableView implements Table {
   public function __construct(&$data) {
     $this->data = &$data;
     $this->height = count($data);
@@ -31,11 +33,11 @@ class coopy_PhpTableView implements coopy_Table{
   }
 
   public function toString() {
-    return coopy_SimpleTable::tableToString($this);
+    return SimpleTable::tableToString($this);
   }
 
   public function getCellView() {
-    return new coopy_PhpCellView();
+    return new PhpCellView();
   }
 
   public function isResizable() {
@@ -86,8 +88,8 @@ class coopy_PhpTableView implements coopy_Table{
   }
 
   public function insertOrDeleteRows($xfate,$hfate) {
-    if (is_array($xfate)) { $fate = $xfate; } else { $fate = $xfate->a; }
-    $fate = $xfate->a;
+    if (is_array($xfate)) { $fate = $xfate; } else { $fate = $xfate->arr; }
+    $fate = $xfate->arr;
     $ndata = array();
     $top = 0;
     for ($i=0; $i<count($fate); $i++) {
@@ -110,7 +112,7 @@ class coopy_PhpTableView implements coopy_Table{
   }
 
   public function insertOrDeleteColumns($xfate,$wfate) {
-    if (is_array($xfate)) { $fate = $xfate; } else { $fate = $xfate->a; }
+    if (is_array($xfate)) { $fate = $xfate; } else { $fate = $xfate->arr; }
     if ($wfate==$this->width && $wfate==count($fate)) {
       $eq = true;
       for ($i=0; $i<$wfate; $i++) {
@@ -173,7 +175,7 @@ class coopy_PhpTableView implements coopy_Table{
 
   public function hclone() {
     $blank = array();
-    $result = new coopy_PhpTableView($blank);
+    $result = new PhpTableView($blank);
     $result->resize($this->width,$this->height);
     for ($c=0; $c<$this->width; $c++) {
       for ($r=0; $r<$this->height; $r++) {
@@ -185,10 +187,15 @@ class coopy_PhpTableView implements coopy_Table{
 
   public function create() {
     $blank = array();
-    return new coopy_PhpTableView($blank);
+    return new PhpTableView($blank);
   }
 
   public function getMeta() {
     return null;
+  }
+
+  public function clone()
+  {
+      return new PhpTableView($this->data);
   }
 }

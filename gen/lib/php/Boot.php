@@ -1023,14 +1023,6 @@ set_include_path(__DIR__.'/../');
 spl_autoload_register(
     function($class){
         $file = stream_resolve_include_path(str_replace('\\', '/', $class) .'.php');
-//        if (!$file) {
-//            $class = str_replace('_', '/', $class);
-//            $file = stream_resolve_include_path($class .'.php');
-//
-//            var_dump($class);
-//            var_dump($file);
-//        }
-
         if ($file) {
             include_once $file;
         }
